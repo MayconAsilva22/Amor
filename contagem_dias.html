@@ -1,0 +1,29 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Contagem de Dias Juntos</title>
+    <style>
+        body { text-align: center; font-family: Arial, sans-serif; }
+        img { max-width: 100%; height: auto; }
+        h1 { color: #4CAF50; }
+    </style>
+    <script>
+        function contarDias() {
+            const dataInicio = new Date("2023-12-08");
+            const hoje = new Date();
+            const diffTime = Math.abs(hoje - dataInicio);
+            const diffDias = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+            document.getElementById("contador").innerText = diffDias + " dias juntos!";
+        }
+    </script>
+</head>
+<body onload="contarDias()">
+    <h1>Mensagem para minha amada</h1>
+    <p>Querida Estella, estamos juntos há:</p>
+    <h2 id="contador"></h2>
+    <p>Meu amor, faltam poucos dias para nosso primeiro aninho juntos, e não consigo expressar o quanto isso significa para mim. Desde o primeiro dia, cada momento ao seu lado tem sido incrível, e eu tenho certeza de que quero passar todos os dias da minha vida contigo. Esse será apenas o primeiro de muitos anos que ainda vamos viver juntos. Eu te amo mais do que posso descrever, e sou imensamente grato por ter você em minha vida!</p>
+    <img src="https://i.ibb.co/Z87sh8x/foto.jpg" alt="Foto nossa">
+</body>
+</html>
