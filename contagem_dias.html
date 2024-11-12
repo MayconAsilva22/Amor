@@ -1,13 +1,39 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <title>Contagem de Dias Juntos</title>
     <style>
-    body { text-align: center; font-family: Arial, sans-serif; }
-    img { max-width: 80%; height: auto; }  /* Aumenta o tamanho da imagem */
-    h1 { color: #4CAF50; }
+        /* Fundo preto e texto branco */
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background-color: #000;  /* Fundo preto */
+            color: #fff;  /* Texto branco */
+        }
+        img {
+            max-width: 80%;
+            height: auto;
+            border-radius: 15px;  /* Deixa a imagem com bordas arredondadas */
+        }
+        h1 {
+            color: #FF1493;  /* Cor rosa para o título */
+        }
+        h2 {
+            color: #FF69B4;  /* Cor rosa claro para o contador */
+        }
+        p {
+            font-size: 1.2em;
+            margin: 20px;
+        }
+        .coracoes {
+            font-size: 2em;
+        }
+        /* Adicionando corações como fundo */
+        .coracao {
+            color: #FF69B4;  /* Cor rosa para os corações */
+            font-size: 1.5em;
+        }
     </style>
     <script>
         function contarDias() {
@@ -21,9 +47,11 @@
 </head>
 <body onload="contarDias()">
     <h1>Mensagem para minha amada</h1>
+    <div class="coracoes">❤️❤️❤️</div>
     <p>Querida Estella, estamos juntos há:</p>
     <h2 id="contador"></h2>
     <p>Meu amor, faltam poucos dias para nosso primeiro aninho juntos, e não consigo expressar o quanto isso significa para mim. Desde o primeiro dia, cada momento ao seu lado tem sido incrível, e eu tenho certeza de que quero passar todos os dias da minha vida contigo. Esse será apenas o primeiro de muitos anos que ainda vamos viver juntos. Eu te amo mais do que posso descrever, e sou imensamente grato por ter você em minha vida!</p>
+    <div class="coracoes">❤️❤️❤️</div>
     <img src="https://i.ibb.co/Z87sh8x/foto.jpg" alt="Foto nossa">
 </body>
 </html>
