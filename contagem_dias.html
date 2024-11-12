@@ -58,28 +58,47 @@
     </style>
     <script>
         function contarTempo() {
-            // Data e hora corrigida para o início do relacionamento
             const dataInicio = new Date("2023-12-08T10:32:00");
             const agora = new Date();
 
-            let diff = agora - dataInicio;
+            let anos = agora.getFullYear() - dataInicio.getFullYear();
+            let meses = agora.getMonth() - dataInicio.getMonth();
+            let dias = agora.getDate() - dataInicio.getDate();
+            let horas = agora.getHours() - dataInicio.getHours();
+            let minutos = agora.getMinutes() - dataInicio.getMinutes();
+            let segundos = agora.getSeconds() - dataInicio.getSeconds();
 
-            const anos = Math.floor(diff / (1000 * 60 * 60 * 24 * 365));
-            diff -= anos * (1000 * 60 * 60 * 24 * 365);
+            // Ajustar meses e anos se necessário
+            if (meses < 0) {
+                anos -= 1;
+                meses += 12;
+            }
 
-            const meses = Math.floor(diff / (1000 * 60 * 60 * 24 * 30));
-            diff -= meses * (1000 * 60 * 60 * 24 * 30);
+            // Ajustar dias e meses se necessário
+            if (dias < 0) {
+                meses -= 1;
+                // Calcular o número de dias no mês anterior
+                const ultimoDiaMesAnterior = new Date(agora.getFullYear(), agora.getMonth(), 0).getDate();
+                dias += ultimoDiaMesAnterior;
+            }
 
-            const dias = Math.floor(diff / (1000 * 60 * 60 * 24));
-            diff -= dias * (1000 * 60 * 60 * 24);
+            // Ajustar horas e dias se necessário
+            if (horas < 0) {
+                dias -= 1;
+                horas += 24;
+            }
 
-            const horas = Math.floor(diff / (1000 * 60 * 60));
-            diff -= horas * (1000 * 60 * 60);
+            // Ajustar minutos e horas se necessário
+            if (minutos < 0) {
+                horas -= 1;
+                minutos += 60;
+            }
 
-            const minutos = Math.floor(diff / (1000 * 60));
-            diff -= minutos * (1000 * 60);
-
-            const segundos = Math.floor(diff / 1000);
+            // Ajustar segundos e minutos se necessário
+            if (segundos < 0) {
+                minutos -= 1;
+                segundos += 60;
+            }
 
             document.getElementById("anos").innerText = anos;
             document.getElementById("meses").innerText = meses;
@@ -93,10 +112,6 @@
     </script>
 </head>
 <body onload="contarTempo()">
-    <audio autoplay loop>
-        <source src="https://drive.google.com/uc?export=download&id=1U0yVmmO4HU-GKjKYkuqVNKMxTubogGl0" type="audio/mp3">
-        Seu navegador não suporta a tag de áudio.
-    </audio>
 
     <h1>Mensagem para minha amada</h1>
     <div class="coracoes">❤️❤️❤️</div>
