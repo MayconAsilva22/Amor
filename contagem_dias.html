@@ -28,22 +28,110 @@
         .coracoes {
             font-size: 2em;
         }
-    </style>
-</head>
-<body>
 
-    <!-- Player de áudio do Vocaroo com autoplay ativado -->
-    <div>
-        <iframe width="300" height="60" src="https://vocaroo.com/embed/1jSEbw6M9Euo?autoplay=1" frameborder="0" allow="autoplay"></iframe>
-        <br>
-        <a href="https://voca.ro/1jSEbw6M9Euo" title="Gravador de Voz do Vocaroo" target="_blank">Ver no Vocaroo &gt;&gt;</a>
-    </div>
+        /* Estilos do contador */
+        .contador {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 20px 0;
+            font-size: 1.5em;
+        }
+        .bloco {
+            background-color: #333;
+            padding: 10px;
+            border-radius: 5px;
+            min-width: 60px;
+            color: #FF69B4;
+            font-weight: bold;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(255, 20, 147, 0.3);
+            transition: transform 0.2s;
+        }
+        .bloco:hover {
+            transform: translateY(-5px);
+        }
+        .label {
+            font-size: 0.7em;
+            color: #ccc;
+        }
+    </style>
+    <script>
+        function contarTempo() {
+            // Data e hora corrigida para o início do relacionamento
+            const dataInicio = new Date("2023-12-08T10:32:00");
+            const agora = new Date();
+
+            let diff = agora - dataInicio;
+
+            const anos = Math.floor(diff / (1000 * 60 * 60 * 24 * 365));
+            diff -= anos * (1000 * 60 * 60 * 24 * 365);
+
+            const meses = Math.floor(diff / (1000 * 60 * 60 * 24 * 30));
+            diff -= meses * (1000 * 60 * 60 * 24 * 30);
+
+            const dias = Math.floor(diff / (1000 * 60 * 60 * 24));
+            diff -= dias * (1000 * 60 * 60 * 24);
+
+            const horas = Math.floor(diff / (1000 * 60 * 60));
+            diff -= horas * (1000 * 60 * 60);
+
+            const minutos = Math.floor(diff / (1000 * 60));
+            diff -= minutos * (1000 * 60);
+
+            const segundos = Math.floor(diff / 1000);
+
+            document.getElementById("anos").innerText = anos;
+            document.getElementById("meses").innerText = meses;
+            document.getElementById("dias").innerText = dias;
+            document.getElementById("horas").innerText = horas;
+            document.getElementById("minutos").innerText = minutos;
+            document.getElementById("segundos").innerText = segundos;
+        }
+
+        setInterval(contarTempo, 1000);
+    </script>
+</head>
+<body onload="contarTempo()">
+    <audio autoplay loop>
+        <source src="https://drive.google.com/uc?export=download&id=1U0yVmmO4HU-GKjKYkuqVNKMxTubogGl0" type="audio/mp3">
+        Seu navegador não suporta a tag de áudio.
+    </audio>
 
     <h1>Mensagem para minha amada</h1>
     <div class="coracoes">❤️❤️❤️</div>
     <p>Querida Estella, estamos juntos há:</p>
 
-    <!-- Resto do seu conteúdo -->
+    <!-- Contador com blocos -->
+    <div class="contador">
+        <div class="bloco">
+            <span id="anos">0</span>
+            <div class="label">Anos</div>
+        </div>
+        <div class="bloco">
+            <span id="meses">0</span>
+            <div class="label">Meses</div>
+        </div>
+        <div class="bloco">
+            <span id="dias">0</span>
+            <div class="label">Dias</div>
+        </div>
+        <div class="bloco">
+            <span id="horas">0</span>
+            <div class="label">Horas</div>
+        </div>
+        <div class="bloco">
+            <span id="minutos">0</span>
+            <div class="label">Minutos</div>
+        </div>
+        <div class="bloco">
+            <span id="segundos">0</span>
+            <div class="label">Segundos</div>
+        </div>
+    </div>
 
+    <p>Meu amor, faltam poucos dias para nosso primeiro aninho juntos, e não consigo expressar o quanto isso significa para mim. Desde o primeiro dia, cada momento ao seu lado tem sido incrível, e eu tenho certeza de que quero passar todos os dias da minha vida contigo. Esse será apenas o primeiro de muitos anos que ainda vamos viver juntos. Eu te amo mais do que posso descrever, e sou imensamente grato por ter você em minha vida!</p>
+    <div class="coracoes">❤️❤️❤️</div>
+    <img src="https://i.ibb.co/Z87sh8x/foto.jpg" alt="Foto nossa">
 </body>
 </html>
