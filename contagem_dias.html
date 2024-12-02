@@ -45,6 +45,7 @@
             meses += 12;
         }
 
+        // Atualizar o DOM com os valores calculados
         document.getElementById("anos").innerText = anos;
         document.getElementById("meses").innerText = meses;
         document.getElementById("dias").innerText = dias;
@@ -53,5 +54,6 @@
         document.getElementById("segundos").innerText = segundos;
     }
 
+    // Iniciar o contador
     setInterval(contarTempo, 1000);
 </script>
