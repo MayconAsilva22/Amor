@@ -10,16 +10,18 @@
         let minutos = agora.getMinutes() - dataInicio.getMinutes();
         let segundos = agora.getSeconds() - dataInicio.getSeconds();
 
-        // Ajustar segundos e minutos se necessário
-        if (segundos < 0) {
-            minutos -= 1;
-            segundos += 60;
+        // Ajustar meses e anos se necessário
+        if (meses < 0) {
+            anos -= 1;
+            meses += 12;
         }
 
-        // Ajustar minutos e horas se necessário
-        if (minutos < 0) {
-            horas -= 1;
-            minutos += 60;
+        // Ajustar dias e meses se necessário
+        if (dias < 0) {
+            meses -= 1;
+            // Calcular o número de dias no mês anterior
+            const ultimoDiaMesAnterior = new Date(agora.getFullYear(), agora.getMonth(), 0).getDate();
+            dias += ultimoDiaMesAnterior;
         }
 
         // Ajustar horas e dias se necessário
@@ -28,24 +30,18 @@
             horas += 24;
         }
 
-        // Ajustar dias e meses se necessário
-        if (dias < 0) {
-            meses -= 1;
-            const ultimoDiaMesAnterior = new Date(
-                agora.getFullYear(),
-                agora.getMonth(),
-                0
-            ).getDate();
-            dias += ultimoDiaMesAnterior;
+        // Ajustar minutos e horas se necessário
+        if (minutos < 0) {
+            horas -= 1;
+            minutos += 60;
         }
 
-        // Ajustar meses e anos se necessário
-        if (meses < 0) {
-            anos -= 1;
-            meses += 12;
+        // Ajustar segundos e minutos se necessário
+        if (segundos < 0) {
+            minutos -= 1;
+            segundos += 60;
         }
 
-        // Atualizar o DOM com os valores calculados
         document.getElementById("anos").innerText = anos;
         document.getElementById("meses").innerText = meses;
         document.getElementById("dias").innerText = dias;
@@ -54,6 +50,5 @@
         document.getElementById("segundos").innerText = segundos;
     }
 
-    // Iniciar o contador
     setInterval(contarTempo, 1000);
 </script>
