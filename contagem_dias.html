@@ -1,152 +1,57 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <title>Contagem de Tempo Juntos</title>
-    <style>
-        body {
-            text-align: center;
-            font-family: Arial, sans-serif;
-            background-color: #000;
-            color: #fff;
-        }
-        img {
-            width: 90%;
-            height: auto;
-            border-radius: 15px;
-        }
-        h1 {
-            color: #FF1493;
-        }
-        h2 {
-            color: #FF69B4;
-        }
-        p {
-            font-size: 1.2em;
-            margin: 20px;
-        }
-        .coracoes {
-            font-size: 2em;
+<script>
+    function contarTempo() {
+        const dataInicio = new Date("2023-12-08T10:32:00");
+        const agora = new Date();
+
+        let anos = agora.getFullYear() - dataInicio.getFullYear();
+        let meses = agora.getMonth() - dataInicio.getMonth();
+        let dias = agora.getDate() - dataInicio.getDate();
+        let horas = agora.getHours() - dataInicio.getHours();
+        let minutos = agora.getMinutes() - dataInicio.getMinutes();
+        let segundos = agora.getSeconds() - dataInicio.getSeconds();
+
+        // Ajustar segundos e minutos se necessário
+        if (segundos < 0) {
+            minutos -= 1;
+            segundos += 60;
         }
 
-        /* Estilos do contador */
-        .contador {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin: 20px 0;
-            font-size: 1.5em;
-        }
-        .bloco {
-            background-color: #333;
-            padding: 10px;
-            border-radius: 5px;
-            min-width: 60px;
-            color: #FF69B4;
-            font-weight: bold;
-            text-align: center;
-            box-shadow: 0 4px 8px rgba(255, 20, 147, 0.3);
-            transition: transform 0.2s;
-        }
-        .bloco:hover {
-            transform: translateY(-5px);
-        }
-        .label {
-            font-size: 0.7em;
-            color: #ccc;
-        }
-    </style>
-    <script>
-        function contarTempo() {
-            const dataInicio = new Date("2023-12-08T10:32:00");
-            const agora = new Date();
-
-            let anos = agora.getFullYear() - dataInicio.getFullYear();
-            let meses = agora.getMonth() - dataInicio.getMonth();
-            let dias = agora.getDate() - dataInicio.getDate();
-            let horas = agora.getHours() - dataInicio.getHours();
-            let minutos = agora.getMinutes() - dataInicio.getMinutes();
-            let segundos = agora.getSeconds() - dataInicio.getSeconds();
-
-            // Ajustar meses e anos se necessário
-            if (meses < 0) {
-                anos -= 1;
-                meses += 12;
-            }
-
-            // Ajustar dias e meses se necessário
-            if (dias < 0) {
-                meses -= 1;
-                // Calcular o número de dias no mês anterior
-                const ultimoDiaMesAnterior = new Date(agora.getFullYear(), agora.getMonth(), 0).getDate();
-                dias += ultimoDiaMesAnterior;
-            }
-
-            // Ajustar horas e dias se necessário
-            if (horas < 0) {
-                dias -= 1;
-                horas += 24;
-            }
-
-            // Ajustar minutos e horas se necessário
-            if (minutos < 0) {
-                horas -= 1;
-                minutos += 60;
-            }
-
-            // Ajustar segundos e minutos se necessário
-            if (segundos < 0) {
-                minutos -= 1;
-                segundos += 60;
-            }
-
-            document.getElementById("anos").innerText = anos;
-            document.getElementById("meses").innerText = meses;
-            document.getElementById("dias").innerText = dias;
-            document.getElementById("horas").innerText = horas;
-            document.getElementById("minutos").innerText = minutos;
-            document.getElementById("segundos").innerText = segundos;
+        // Ajustar minutos e horas se necessário
+        if (minutos < 0) {
+            horas -= 1;
+            minutos += 60;
         }
 
-        setInterval(contarTempo, 1000);
-    </script>
-</head>
-<body onload="contarTempo()">
+        // Ajustar horas e dias se necessário
+        if (horas < 0) {
+            dias -= 1;
+            horas += 24;
+        }
 
-    <h1>Mensagem para minha amada</h1>
-    <div class="coracoes">❤️❤️❤️</div>
-    <p>Querida Estella, estamos juntos há:</p>
+        // Ajustar dias e meses se necessário
+        if (dias < 0) {
+            meses -= 1;
+            const ultimoDiaMesAnterior = new Date(
+                agora.getFullYear(),
+                agora.getMonth(),
+                0
+            ).getDate();
+            dias += ultimoDiaMesAnterior;
+        }
 
-    <!-- Contador com blocos -->
-    <div class="contador">
-        <div class="bloco">
-            <span id="anos">0</span>
-            <div class="label">Anos</div>
-        </div>
-        <div class="bloco">
-            <span id="meses">0</span>
-            <div class="label">Meses</div>
-        </div>
-        <div class="bloco">
-            <span id="dias">0</span>
-            <div class="label">Dias</div>
-        </div>
-        <div class="bloco">
-            <span id="horas">0</span>
-            <div class="label">Horas</div>
-        </div>
-        <div class="bloco">
-            <span id="minutos">0</span>
-            <div class="label">Minutos</div>
-        </div>
-        <div class="bloco">
-            <span id="segundos">0</span>
-            <div class="label">Segundos</div>
-        </div>
-    </div>
+        // Ajustar meses e anos se necessário
+        if (meses < 0) {
+            anos -= 1;
+            meses += 12;
+        }
 
-    <p>Meu amor, faltam poucos dias para nosso primeiro aninho juntos, e não consigo expressar o quanto isso significa para mim. Desde o primeiro dia, cada momento ao seu lado tem sido incrível, e eu tenho certeza de que quero passar todos os dias da minha vida contigo. Esse será apenas o primeiro de muitos anos que ainda vamos viver juntos. Eu te amo mais do que posso descrever, e sou imensamente grato por ter você em minha vida!</p>
-    <div class="coracoes">❤️❤️❤️</div>
-    <img src="https://i.ibb.co/Z87sh8x/foto.jpg" alt="Foto nossa">
-</body>
-</html>
+        document.getElementById("anos").innerText = anos;
+        document.getElementById("meses").innerText = meses;
+        document.getElementById("dias").innerText = dias;
+        document.getElementById("horas").innerText = horas;
+        document.getElementById("minutos").innerText = minutos;
+        document.getElementById("segundos").innerText = segundos;
+    }
+
+    setInterval(contarTempo, 1000);
+</script>
